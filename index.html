@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGAWORLD — Привилегии</title>
+    <style>
+        :root {
+            --bg-body: #050505;
+            --bg-card: #120f21;
+            --bg-inner: #1a162a;
+            --primary: #9b5cf0;
+            --primary-hover: #854bcb;
+            --accent-red: #ff6b6b;
+            --accent-red-hover: #e65b5b;
+            --text-main: #ffffff;
+            --text-sec: #a0a0a0;
+            --text-price: #ffffff;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(155, 92, 240, 0.4);
+        }
+        nav button {
+            background: none;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav button:hover {
+            background: var(--primary);
+            color: #000;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .hero p {
+            color: var(--text-sec);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Сетка карточек как на фото */
+        .privilege-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 60px;
+        }
+        .privilege-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .privilege-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(155, 92, 240, 0.2);
+            border-color: rgba(155, 92, 240, 0.3);
+        }
+        .privilege-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-price);
+            margin: 10px 0 20px 0;
+            line-height: 1;
+        }
+        .desc {
+            color: var(--text-sec);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            text-align: left; /* Чуть сдвинем текст влево для читаемости */
+        }
+        .desc strong {
+            color: #fff;
+        }
+
+        /* Кнопки в стиле "капсула" как на фото */
+        .btn-capsule {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn-purple {
+            background: linear-gradient(135deg, #8a44f0, #b066ff);
+            color: white;
+        }
+        .btn-purple:hover {
+            background: linear-gradient(135deg, #7536d0, #9a50cc);
+            transform: scale(1.02);
+        }
+        .btn-red {
+            background: linear-gradient(135deg, #ff5c5c, #ff8a8a);
+            color: white;
+        }
+        .btn-red:hover {
+            background: linear-gradient(135deg, #e04a4a, #ff7575);
+            transform: scale(1.02);
+        }
+
+        .specs-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: var(--bg-inner);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 40px 0;
+            color: var(--text-sec);
+        }
+        .specs-bar div {
+            text-align: center;
+        }
+        .specs-bar strong {
+            display: block;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .connect-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        .ip-display {
+            background: rgba(155, 92, 240, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--primary);
+            border: 1px solid rgba(155, 92, 240, 0.2);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-sec);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <div class="logo">MEGAWORLD</div>
+        <nav>
+            <button onclick="document.getElementById('privileges').scrollIntoView({behavior: 'smooth'})">Привилегии</button>
+            <button onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">Особенности</button>
+            <button onclick="document.getElementById('connect').scrollIntoView({behavior: 'smooth'})">Подключиться</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Выбери свой путь</h1>
+        <p>Поддержи сервер MEGAWORLD и получи уникальные возможности. Привилегии действуют до следующего вайпа (вайпы каждые 3 месяца).</p>
+        <button class="btn-capsule btn-purple" onclick="document.getElementById('privileges').scrollIntoView({behavior: 'smooth'})" style="width: auto; padding: 12px 40px; display: inline-block;">Смотреть привилегии</button>
+    </section>
+
+    <div class="container" id="privileges">
+        <div class="privilege-grid">
+            <!-- Владыка -->
+            <div class="privilege-card">
+                <h3>Владыка</h3>
+                <div class="price">500₽</div>
+                <div class="desc">
+                    <strong>Доступ к Fly, God, /repair.</strong><br>
+                    Действует до следующего вайпа (вайпы каждые 3 месяца).
+                </div>
+                <a href="https://pay.cloudtips.ru/p/acf3274b" target="_blank" class="btn-capsule btn-purple">Купить</a>
+            </div>
+            
+            <!-- Дракон -->
+            <div class="privilege-card">
+                <h3>Дракон</h3>
+                <div class="price">10₽</div>
+                <div class="desc">
+                    <strong>До вайпа.</strong><br>
+                    Действует до следующего вайпа (вайпы каждые 3 месяца).
+                </div>
+                <a href="https://max.ru/join/guPraf_ktXg7cztVwUau78iPFCg2IHDrGJbY6Lq7tSQ" target="_blank" class="btn-capsule btn-red">Оплатить в MAX</a>
+            </div>
+            
+            <!-- Инфинити -->
+            <div class="privilege-card">
+                <h3>Инфинити</h3>
+                <div class="price">50₽</div>
+                <div class="desc">
+                    <strong>До вайпа.</strong><br>
+                    Действует до следующего вайпа (вайпы каждые 3 месяца).
+                </div>
+                <a href="https://pay.cloudtips.ru/p/acf3274b" target="_blank" class="btn-capsule btn-purple">Купить</a>
+            </div>
+            
+            <!-- Крутак -->
+            <div class="privilege-card">
+                <h3>Крутак</h3>
+                <div class="price">100₽</div>
+                <div class="desc">
+                    <strong>До вайпа.</strong><br>
+                    Действует до следующего вайпа (вайпы каждые 3 месяца).
+                </div>
+                <a href="https://pay.cloudtips.ru/p/acf3274b" target="_blank" class="btn-capsule btn-purple">Купить</a>
+            </div>
+
+            <!-- Мега крутак (добавил для полноты) -->
+            <div class="privilege-card">
+                <h3>Мега крутак</h3>
+                <div class="price">200₽</div>
+                <div class="desc">
+                    <strong>До вайпа.</strong><br>
+                    Действует до следующего вайпа (вайпы каждые 3 месяца).
+                </div>
+                <a href="https://pay.cloudtips.ru/p/acf3274b" target="_blank" class="btn-capsule btn-purple">Купить</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="specs-bar container" id="features">
+        <div>
+            <strong>99.98%</strong>
+            Uptime
+        </div>
+        <div>
+            <strong>20.0</strong>
+            TPS
+        </div>
+        <div>
+            <strong>1.21.11</strong>
+            Версия
+        </div>
+        <div>
+            <strong>Anti-DDoS</strong>
+            Защита
+        </div>
+        <div>
+            <strong>5000+</strong>
+            Слоты
+        </div>
+    </div>
+
+    <div class="container" id="connect">
+        <div class="connect-section">
+            <h2>Подключиться к серверу</h2>
+            <p>Лучший мультиформатный сервер Minecraft 2026 года.</p>
+            <div class="ip-display">MEGAWORLDMEGA.aternos.me</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 MEGAWORLD. Все права защищены.</p>
+            <div style="margin-top: 15px;">
+                <a href="#" style="color: var(--text-sec); margin: 0 10px;">Правила</a>
+                <a href="#" style="color: var(--text-sec); margin: 0 10px;">Политика</a>
+                <a href="#" style="color: var(--text-sec); margin: 0 10px;">Контакты</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
